@@ -3,6 +3,7 @@ const { populate } = require("../models/LectureSno");
 const Order = require("../models/Order");
 const { randomStringGenerator } = require("../utils/randomStringGenerator");
 const lectureController = require("./lecture.controller");
+const Lecture = require("../models/Lecture");
 const PAGE_SIZE = 3;
 const orderController = {};
 
