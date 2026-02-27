@@ -88,8 +88,7 @@ orderController.getOrderList = async(req, res) => {
             path: 'items',
             populate: {
                 path: 'lectureId',
-                model: 'Lecture',
-                match: {userId: userId}
+                model: 'Lecture'
             }
         }).populate({
             path: 'userId',
