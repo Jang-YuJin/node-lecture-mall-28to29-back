@@ -69,6 +69,12 @@ orderController.getOrderList = async(req, res) => {
             condition.orderNum = {$regex: ordernum, $options: 'i'};
         }
 
+        // 1) 로그인한 유저가 등록한 강의 id 목록
+        const lectureIds = await Lecture.find({ userId }).distinct("_id");
+
+        // 2) 해당 강의가 items.lectureId에 포함된 주문만 조회
+        condition["items.lectureId"] = { $in: lectureIds };
+        
         let query = Order.find(condition);
         let response = {status: 'success'};
         if(page){
